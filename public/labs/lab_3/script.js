@@ -1,21 +1,22 @@
 /* Put your javascript in here */
-/* label the images, just for convenience, to visually track them */ 
-const images = document.getElementsByTagName('li');
+const images = carousel.querySelectorAll('li');
 
+Array.from(carousel.querySelectorAll('li'));
 const array1 = Array.from(images);
 
-array1.forEach((element) => {
-
-element.style.position = 'relative';
-element.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
+let i = 1;
+Array.from(carousel.querySelectorAll('li')).forEach((element) => {
+  element.style.position = 'relative';
+  element.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
+  i++;
 });
-    
-/* configuration */
-let width = 130; // image width
-let count = 3; // visible images count
 
-let list = carousel.querySelector('ul');
-let listElems = carousel.querySelectorAll('li');
+/* configuration */
+const width = 130; // image width
+const count = 3; // visible images count
+
+const list = carousel.querySelector('ul');
+const listElems = array1;
 
 let position = 0; // ribbon scroll position
 
@@ -23,7 +24,7 @@ carousel.querySelector('.prev').onclick = function() {
   // shift left
   position += width * count;
   // can't move to the left too much, end of images
-  position = Math.min(position, 0)
+  position = Math.min(position, 0);
   list.style.marginLeft = position + 'px';
 };
 
