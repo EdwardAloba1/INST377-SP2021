@@ -1,6 +1,6 @@
 # INST377-SP2021
 
-This is the lab support repository for the Spring 2021 version of INST377. 
+This is the lab support repository for the Spring 2021 version of INST377 . 
 
 ### Installation
 * Once you have forked this repository to your own account using the Fork button in the top right of the Github page
