@@ -1,7 +1,18 @@
+/* eslint-disable max-len */
 function mapInit() {
   // follow the Leaflet Getting Started tutorial here
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiYWxvYmExMjMiLCJhIjoiY2ttM3JxMzNtMDhmczJucWR4azJ3azVkcyJ9.X4dGg6xzb4DzhC5I2CTq0g'
+}).addTo(mymap);
+console.log('mymap',mymap)
   return map;
 }
+
 
 async function dataHandler(mapObjectFromFunction) {
   // use your assignment 1 data handling code here
@@ -48,10 +59,8 @@ window.onload = windowActions;
          return `
            <li>
              <span class ="restaurant"><b>${restaurantName}</b></span><br>
-             <span class ="restaurantType">${restaurantType}</span><br>
              <span class = "address">${address}</span><br>
-             <span class="name">${cityName}, ${stateName}</span><br>
-             <span class ="zipcode">${zipcode}</span><br><br>
+             <br/>
            </li>
            
          `;
@@ -64,3 +73,5 @@ window.onload = windowActions;
 
      searchInput.addEventListener('change', displayMatches);
      searchInput.addEventListener('keyup', displayMatches);
+
+     

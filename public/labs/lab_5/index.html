@@ -1,28 +1,46 @@
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=, initial-scale=1.0">
-     <meta name="viewport" >
-     <link rel="stylesheet" href="styles.css">
-     <title>Assignment 1</title>
- </head>
- <body>
-
-     <h1><u>Assignment 1</u></h1>
-     <h3>Edward Aloba, William Cervi, Jose Esparza</h3>
-
-     <form>
-         <form class="search-form">
-             <input type="text" class="search" placeholder="Zipcode or Restaurant">
-             <ul class="suggestions">
-               <li>Filter for a Zipcode
-               </li>
-               <li>Type of Restaurant or Restaurant</li>
-             </ul>
-           </form>
-     </form>
-
-     <script src = "script.js">  </script>
-
- </body>
- </html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=, initial-scale=1.0">
+        <meta name="viewport" >
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+        <title>Edward Aloba</title>
+    </head>
+    <body>
+   
+        <h1><b>Edward Aloba's Lab 5</b></h1> 
+        <h2><small>Zip Code Food Search</small></h2><br />
+        
+        <div class="columns">
+            <div class="column">
+                <form>
+                    <form class="search-form">
+                        <h4><small><b><small>Search</small></b></small></h4>
+                            <input type="text" class="search" placeholder="Zipcode or Restaurant">
+                        
+                        
+                        <ul class="suggestions">
+                         
+                        </ul>
+                      </form>
+                </form>
+            </div>
+            <div class="column">
+              
+              <div id="mapid">map</div>
+            </div>
+           
+          </div>
+     
+        
+   
+        <script src = "script.js">  </script>
+   
+    </body>
+    </html>
