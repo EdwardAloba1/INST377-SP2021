@@ -17,6 +17,7 @@ console.log('mymap',mymap)
 async function dataHandler(mapObjectFromFunction) {
   // use your assignment 1 data handling code here
   // and target mapObjectFromFunction to attach markers
+  var marker = L.marker([51.5, -0.09]).addTo(mapObjectFromFunction);
 }
 
 async function windowActions() {
@@ -74,4 +75,5 @@ window.onload = windowActions;
      searchInput.addEventListener('change', displayMatches);
      searchInput.addEventListener('keyup', displayMatches);
 
+     var mymap = L.map('mapid').setView([51.505, -0.09], 13);
      

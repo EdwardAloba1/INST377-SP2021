@@ -7,24 +7,23 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
+        <link rel="stylesheet" href="styles.css">
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
         <title>Edward Aloba</title>
     </head>
     <body>
-   
-        <h1><b>Edward Aloba's Lab 5</b></h1> 
-        <h2><small>Zip Code Food Search</small></h2><br />
+        <h1 class = "title"><b>Edward Aloba's Lab 5</b></h1> 
+        <h2 class = "subtitle">Zip Code Food Search</h2><br />
         
         <div class="columns">
             <div class="column">
                 <form>
                     <form class="search-form">
-                        <h4><small><b><small>Search</small></b></small></h4>
-                            <input type="text" class="search" placeholder="Zipcode or Restaurant">
-                        
-                        
+                        <label for="input"> <small><b>Search</b></small></label><br/>
+                            <input name = "input" type="text" class="search" class="input" id = "input" placeholder="Zipcode or Restaurant"><br/>
+                            <button  type="submit"> Submit </button>
                         <ul class="suggestions">
                          
                         </ul>
@@ -33,7 +32,10 @@
             </div>
             <div class="column">
               
-              <div id="mapid">map</div>
+              <div id="mapid">map
+
+
+              </div>
             </div>
            
           </div>
