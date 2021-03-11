@@ -1,4 +1,7 @@
 /* eslint-disable max-len */
+var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
 function mapInit() {
   // follow the Leaflet Getting Started tutorial here
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -17,7 +20,7 @@ console.log('mymap',mymap)
 async function dataHandler(mapObjectFromFunction) {
   // use your assignment 1 data handling code here
   // and target mapObjectFromFunction to attach markers
-  var marker = L.marker([51.5, -0.09]).addTo(mapObjectFromFunction);
+  
 }
 
 async function windowActions() {
@@ -59,8 +62,10 @@ window.onload = windowActions;
          //Formats selected info
          return `
            <li>
+           <div class = "box" id = "formBox"
              <span class ="restaurant"><b>${restaurantName}</b></span><br>
-             <span class = "address">${address}</span><br>
+             <span class = "address">${address}</span>
+             </div>
              <br/>
            </li>
            
@@ -69,11 +74,10 @@ window.onload = windowActions;
        suggestions.innerHTML = html;
      }
 
-     const searchInput = document.querySelector('.search');
+     const searchInput = document.querySelector('.input');
      const suggestions = document.querySelector('.suggestions');
 
      searchInput.addEventListener('change', displayMatches);
      searchInput.addEventListener('keyup', displayMatches);
 
-     var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-     
+    
