@@ -13,14 +13,44 @@ function mapInit() {
     accessToken: 'pk.eyJ1IjoiYWxvYmExMjMiLCJhIjoiY2ttM3JxMzNtMDhmczJucWR4azJ3azVkcyJ9.X4dGg6xzb4DzhC5I2CTq0g'
 }).addTo(mymap);
 console.log('mymap',mymap)
-  return map;
+  return mymap;
 }
 
 
 async function dataHandler(mapObjectFromFunction) {
   // use your assignment 1 data handling code here
   // and target mapObjectFromFunction to attach markers
+  const form = document.querySelector('#search-form');
+  form.addEventListener('submit',async (event) => {
+    event.preventDefault();
+    console.log('submit');
   
+  
+   const matchArray = findMatches(this.value, cities);
+   const html = matchArray.map(place => {
+     const regex = new RegExp(this.value, 'gi');
+     const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+     const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+     const restaurantName = place.name.replace(regex, `<span class="hl">${this.value}</span>`);
+     const restaurantType = place.category.replace(regex, `<span class="hl">${this.value}</span>`);
+     const address = place.address_line_1.replace(regex, `<span class="hl">${this.value}</span>`);
+     const zipcode = place.zip.replace(regex, `<span class="hl">${this.value}</span>`);
+
+     //Formats selected info
+     return `
+       <li>
+       <div class = "box" id = "formBox"
+         <span class ="restaurant"><b>${restaurantName}</b></span><br>
+         <span class = "address">${address}</span>
+         </div>
+         <br/>
+       </li>
+       
+     `;
+   }).join('');
+   suggestions.innerHTML = html;
+  });
+   
 }
 
 async function windowActions() {
@@ -32,7 +62,7 @@ window.onload = windowActions;
 
     //Endpoint link
      const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-
+     
      const cities = [];
      fetch(endpoint)
        .then(blob => blob.json())
@@ -47,37 +77,12 @@ window.onload = windowActions;
        });
      }
 
-     //Retrieves specific info from endpoint file
-     function displayMatches() {
-       const matchArray = findMatches(this.value, cities);
-       const html = matchArray.map(place => {
-         const regex = new RegExp(this.value, 'gi');
-         const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
-         const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
-         const restaurantName = place.name.replace(regex, `<span class="hl">${this.value}</span>`);
-         const restaurantType = place.category.replace(regex, `<span class="hl">${this.value}</span>`);
-         const address = place.address_line_1.replace(regex, `<span class="hl">${this.value}</span>`);
-         const zipcode = place.zip.replace(regex, `<span class="hl">${this.value}</span>`);
-
-         //Formats selected info
-         return `
-           <li>
-           <div class = "box" id = "formBox"
-             <span class ="restaurant"><b>${restaurantName}</b></span><br>
-             <span class = "address">${address}</span>
-             </div>
-             <br/>
-           </li>
-           
-         `;
-       }).join('');
-       suggestions.innerHTML = html;
-     }
+    
 
      const searchInput = document.querySelector('.input');
      const suggestions = document.querySelector('.suggestions');
 
-     searchInput.addEventListener('change', displayMatches);
-     searchInput.addEventListener('keyup', displayMatches);
+     searchInput.addEventListener('change', dataHandler);
+     searchInput.addEventListener('keyup', dataHandler);
 
     
