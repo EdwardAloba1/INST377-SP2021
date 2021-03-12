@@ -28,6 +28,12 @@ async function dataHandler(mapObjectFromFunction) {
   
    const matchArray1 = findMatches(this.value, cities);
    const matchArray = matchArray1.slice(0,5);
+
+   if(matchArray.length < 1){
+     replyMessage.classList.add('box');
+     replyMessage.innterText = 'No matches found';
+     return;
+   }
    const html = matchArray.map(place => {
      const regex = new RegExp(this.value, 'gi');
      const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
@@ -39,6 +45,8 @@ async function dataHandler(mapObjectFromFunction) {
      const longLat = place.geocoded_column_1.coordinates;
      const marker = L.marker([longLat[1], longLat[0]]).addTo(mymap);
      
+     const {coordinates} = matchArray[0]?.geocoded_column_1;
+     mymap.panTo([coordinates[1],coordinates[0]], 0);
 
      //Formats selected info
      return `
@@ -54,6 +62,8 @@ async function dataHandler(mapObjectFromFunction) {
    }).join('');
    suggestions.innerHTML = html;
   });
+
+ 
    
 }
 
