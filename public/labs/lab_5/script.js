@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+const mymap = L.map('mapid').setView([38.9897, -76.9378], 13);
 
 
 function mapInit() {
@@ -26,7 +26,8 @@ async function dataHandler(mapObjectFromFunction) {
     console.log('submit');
   
   
-   const matchArray = findMatches(this.value, cities);
+   const matchArray1 = findMatches(this.value, cities);
+   const matchArray = matchArray1.slice(0,5);
    const html = matchArray.map(place => {
      const regex = new RegExp(this.value, 'gi');
      const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
