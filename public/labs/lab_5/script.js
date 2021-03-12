@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
 
 function mapInit() {
   // follow the Leaflet Getting Started tutorial here
@@ -12,7 +12,7 @@ function mapInit() {
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoiYWxvYmExMjMiLCJhIjoiY2ttM3JxMzNtMDhmczJucWR4azJ3azVkcyJ9.X4dGg6xzb4DzhC5I2CTq0g'
 }).addTo(mymap);
-console.log('mymap',mymap)
+console.log('mymap',mymap);
   return mymap;
 }
 
@@ -35,6 +35,9 @@ async function dataHandler(mapObjectFromFunction) {
      const restaurantType = place.category.replace(regex, `<span class="hl">${this.value}</span>`);
      const address = place.address_line_1.replace(regex, `<span class="hl">${this.value}</span>`);
      const zipcode = place.zip.replace(regex, `<span class="hl">${this.value}</span>`);
+     const longLat = place.geocoded_column_1.coordinates;
+     const marker = L.marker([longLat[1], longLat[0]]).addTo(mymap);
+     
 
      //Formats selected info
      return `
