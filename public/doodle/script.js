@@ -177,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(leftTimerId)
         clearInterval(rightTimerId)
 
+        
     }
 
     function start(){
@@ -188,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             jump(startPoint)
             document.addEventListener('keyup', control)
+            
         }
     }
 
